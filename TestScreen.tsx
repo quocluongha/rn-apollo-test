@@ -1,5 +1,5 @@
 import {gql, useLazyQuery} from '@apollo/client';
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Button, SafeAreaView, StyleSheet} from 'react-native';
 
 export interface TestScreenProps {}
@@ -17,7 +17,9 @@ export const TestScreen: React.FC<TestScreenProps> = props => {
 
   const handleGetData = async () => {
     try {
-      await getData();
+      const {data} = await getData();
+
+      console.log(data); // <-- The data is undefined when downgrading to 3.7
     } catch (error) {
       console.log(error);
     }
