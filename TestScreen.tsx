@@ -15,9 +15,10 @@ export const TestScreen: React.FC<TestScreenProps> = props => {
 
   const handleGetData = async () => {
     try {
-      await getData();
+      const {data} = await getData();
+      console.log('Success', data);
     } catch (error: any) {
-      console.log(error);
+      console.log('Error', error);
       Alert.alert('Error', error?.message);
     }
   };
