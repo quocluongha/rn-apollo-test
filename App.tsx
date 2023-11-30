@@ -5,7 +5,7 @@ import {StyleSheet} from 'react-native';
 import {TestScreen} from './TestScreen';
 
 const client = new ApolloClient({
-  uri: 'https://hasura.sukimashopping.com/v1/graphql',
+  uri: 'https://graphql.anilist.co/',
   cache: new InMemoryCache(),
 });
 

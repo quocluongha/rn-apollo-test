@@ -1,16 +1,14 @@
 import {gql, useLazyQuery} from '@apollo/client';
 import React, {useEffect} from 'react';
-import {Button, SafeAreaView, StyleSheet} from 'react-native';
+import {Alert, Button, SafeAreaView, StyleSheet} from 'react-native';
 
 export interface TestScreenProps {}
 
 export const TestScreen: React.FC<TestScreenProps> = props => {
   const [getData] = useLazyQuery(gql`
-    query aa {
-      getOrders {
-        error
-        message
-        result
+    query test {
+      Media {
+        id
       }
     }
   `);
@@ -18,8 +16,9 @@ export const TestScreen: React.FC<TestScreenProps> = props => {
   const handleGetData = async () => {
     try {
       await getData();
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
+      Alert.alert('Error', error?.message);
     }
   };
 
